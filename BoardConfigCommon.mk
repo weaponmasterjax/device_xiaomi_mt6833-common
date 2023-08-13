@@ -61,5 +61,37 @@ TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)-kernel/Image.gz
 BOARD_VENDOR_KERNEL_MODULES := \
     $(wildcard $(DEVICE_PATH)-kernel/modules/*.ko)
 
+# Partitions
+BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
+
+BOARD_SUPER_PARTITION_GROUPS := xiaomi_dynamic_partitions
+BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
+    system \
+    system_dlkm \
+    system_ext \
+    product \
+    vendor \
+    vendor_dlkm \
+    odm \
+    odm_dlkm
+
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_ODM_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
+
+TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
+TARGET_COPY_OUT_ODM := odm
+TARGET_COPY_OUT_ODM_DLKM := odm_dlkm
+
 # Inherit the proprietary files
 include vendor/xiaomi/mt6833-common/BoardConfigVendor.mk
